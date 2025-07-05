@@ -48,7 +48,7 @@ const SettingsPage = () => {
       email: user?.email || undefined,
       password: undefined,
       newPassword: undefined,
-      isTwoFactorEnabled: undefined,
+      // isTwoFactorEnabled: undefined,
     },
   });
 
@@ -185,7 +185,7 @@ const SettingsPage = () => {
                   </FormItem>
                 )}
               />
-              {user?.isOAuth === false && (
+              {/* {user?.isOAuth === false && (
                 <FormField
                   control={form.control}
                   name="isTwoFactorEnabled"
@@ -208,7 +208,7 @@ const SettingsPage = () => {
                     </FormItem>
                   )}
                 />
-              )}
+              )} */}
             </div>
 
             <FormError message={error} />

@@ -8,7 +8,7 @@ export const SettingsSchema = z
     password: z.optional(z.string().min(6)),
     newPassword: z.optional(z.string().min(6)),
     role: z.enum([UserRole.ADMIN, UserRole.USER]),
-    isTwoFactorEnabled: z.optional(z.boolean()),
+    // isTwoFactorEnabled: z.optional(z.boolean()),
   })
   .refine(
     (data) => {

@@ -5,7 +5,7 @@ import authConfig from "./auth.config";
 import { db } from "./lib/db";
 import { getUserById } from "./data/user";
 import { UserRole } from "@prisma/client";
-import { getTwoFactorConfirmationByUserId } from "./data/two-factor-confirmation";
+// import { getTwoFactorConfirmationByUserId } from "./data/two-factor-confirmation";
 import { getAccountByUserId } from "./data/account";
 
 export const {
@@ -39,20 +39,20 @@ export const {
 
       //TODO: add 2FA check
 
-      if (existingUser?.isTwoFactorEnabled) {
-        const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(
-          existingUser.id
-        );
+      // if (existingUser?.isTwoFactorEnabled) {
+      //   const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(
+      //     existingUser.id
+      //   );
 
-        if (!twoFactorConfirmation) return false;
+      //   if (!twoFactorConfirmation) return false;
 
-        // delete 2FA for next Sign in
-        await db.twoFactorConfirmation.delete({
-          where: {
-            id: twoFactorConfirmation.id,
-          },
-        });
-      }
+      //   // delete 2FA for next Sign in
+      //   await db.twoFactorConfirmation.delete({
+      //     where: {
+      //       id: twoFactorConfirmation.id,
+      //     },
+      //   });
+      // }
 
       return true;
     },
@@ -66,9 +66,9 @@ export const {
         session.user.role = token.role as UserRole;
       }
 
-      if(session.user){
-      session.user.isTwoFactorEnabled = token.isTwofactorEnabled as boolean;
-      }
+      // if(session.user){
+      // session.user.isTwoFactorEnabled = token.isTwofactorEnabled as boolean;
+      // }
 
       if(session.user){
         session.user.name = token.name;
@@ -93,7 +93,7 @@ export const {
       token.name = existingUser.name;
       token.email = existingUser.email;
       token.role = existingUser.role;
-      token.isTwofactorEnabled = existingUser.isTwoFactorEnabled;
+      // token.isTwofactorEnabled = existingUser.isTwoFactorEnabled;
 
       return token;
     },

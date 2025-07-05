@@ -35,7 +35,7 @@ export const LoginForm = () => {
     searchParams.get("error") === "OAuthAccountNotLinked"
       ? "Email already in use with different providers!"
       : "";
-  const [showTwoFactor, setShowTwoFactor] = useState(false);
+  // const [showTwoFactor, setShowTwoFactor] = useState(false);
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
@@ -63,9 +63,9 @@ export const LoginForm = () => {
             form.reset();
             setSuccess(data.success);
           }
-          if (data?.twoFactor) {
-            setShowTwoFactor(true);
-          }
+          // if (data?.twoFactor) {
+          //   setShowTwoFactor(true);
+          // }
         })
         .catch(() => setError("something went wrong"));
     });
@@ -81,7 +81,7 @@ export const LoginForm = () => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
-          {showTwoFactor && (
+          {/* {showTwoFactor && (
               <FormField
               control={form.control}
               name="code"
@@ -98,8 +98,8 @@ export const LoginForm = () => {
                 </FormItem>
               )}
             />
-            )}
-            {!showTwoFactor && (
+            )} */}
+            {/* {!showTwoFactor && ( */}
               <>
               <FormField
               control={form.control}
@@ -140,13 +140,13 @@ export const LoginForm = () => {
               )}
             />
               </>
-            )}
+            {/* )} */}
             
           </div>
           <FormError message={error || urlError} />
           <FormSuccess message={success} />
-          <Button disabled={isPending} type="submit" className="w-full" variant="dexlr">
-            {showTwoFactor? "Confirm" : " Login "}
+          <Button disabled={isPending} type="submit" className="w-full" variant="outline">
+             Login 
           </Button>
         </form>
       </Form>

@@ -62,7 +62,7 @@ function SideBarF({isOpen}: SideBarProps) {
     <aside
         className={`fixed top-0 left-0 z-40 w-64 h-[calc(100vh-4rem)] transition-transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } sm:translate-x-0 `}
+        } sm:translate-x-0`}
         aria-label="Sidebar"
        >
         <div className="h-full flex flex-col p-3 overflow-y-auto bg-white dark:bg-gray-800">

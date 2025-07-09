@@ -13,6 +13,8 @@ import {
   PersonStanding,
   BoxIcon,
   Boxes,
+  Menu,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 import { LoginButton } from "@/components/auth/login-btn";
@@ -48,29 +50,57 @@ const items = [
 ]
 
 
+function SideBarF() {
 
-interface SideBarProps {
-  isOpen: boolean;
-}
+  const [isOpen, setIsOpen] = useState(false);
 
-function SideBarF({isOpen}: SideBarProps) {
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
  
   return (
     <>
 
+      {/* Mobile menu button */}
+              {!isOpen && (
+                <button
+                  onClick={toggleSidebar}
+                  type="button"
+                  className="inline-flex items-center w-fit p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                >
+                  <span className="sr-only">Open sidebar</span>
+                  <Menu className="w-6 h-6" />
+                </button>
+              )}
+             
+
       {/* Sidebar */}
     <aside
-        className={`fixed top-0 left-0 z-40 w-64 h-[calc(100vh-4rem)] transition-transform ${
+        className={`fixed top-0 left-0 z-40 w-64 h-[calc(100%-4rem)] transition-transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } sm:translate-x-0`}
         aria-label="Sidebar"
        >
         <div className="h-full flex flex-col p-3 overflow-y-auto bg-white dark:bg-gray-800">
-            <div className="flex p-2 mb-6">
-              <Package className="w-8 h-8 text-blue-600" />
+            <div className="flex p-2 mb-6 justify-between items-center">
+              <div className="flex items-center justify-center space-x-2">
+               <Package className="w-8 h-8 text-blue-600" />
               <span className="text-xl font-semibold text-blue-600">
                 Edupad
-              </span>
+              </span> 
+              </div>
+              
+             {isOpen && (
+                <button
+                  onClick={toggleSidebar}
+                  type="button"
+                  className="inline-flex items-center w-fit p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                >
+                  <span className="sr-only">Open sidebar</span>
+                  <X className="w-6 h-6" />
+                </button>
+              )}
+
             </div>
         <div className="flex flex-col h-full">
           <ul className="space-y-2 font-medium flex-1">

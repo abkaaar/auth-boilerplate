@@ -77,7 +77,7 @@ const SettingsPage = () => {
   // }
 
   return (
-    <Card className="mt-2 max-w-md">
+    <Card className="w-full h-full">
       <CardHeader>
         <p className="text-xl font-semibold text-center">Settings</p>
       </CardHeader>
